@@ -5,12 +5,51 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne={
+    title:'article One',
+    heading:'article One',
+    date:'sep 29,2016',
+    content: `
+                 <p>
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                </p>
+                <p>
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                </p>
+                <p>
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                    This is the content of my first article. This is the content of my first article. This is the content of my first article.
+                </p>`
+}
+function createTemplate(data){
+    var title= data.title;
+    var date= data.date;
+    var heading= data.heading;
+    var content= data.content;
+}
+var htmlTemplate={
+    <title> 
+        ${title}
+    </title>
+    <h3>
+        ${heading}
+    </h3>
+    <div>
+        ${date}
+    </div>
+    <div>
+        ${content}
+    </div>
+}
+return htmlTemplate;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one',function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(createTemplate(article One));
 });
 
 app.get('/article-two',function(req, res){
