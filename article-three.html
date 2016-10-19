@@ -78,3 +78,39 @@
     </button> has been clicked <span id="count">0<span> times
     </div>
     
+    
+    //counter code
+    var button = document.getElementbyId('counter');
+    var counter=0;
+    button.onclick=function(){
+        counter=counter+1;
+        var span =document.getElementbyId('count');
+        span.innerHTML=counter.tostring();
+    }
+    
+    
+    //counter code
+     var button = document.getElementbyId('counter');
+     button.onclick=function(){
+         //create a request object
+         var request=new XMLHttpRequest();
+         //capture the response & store it in a variable
+         reuest.onreadystatechange=function(){
+             if(request.readystate===XMLHttpRequest.Done){
+                 //take some action
+                 if(request.status===200){
+                     var counter=request.responseText;
+                     var span=document.getElementById('count');
+                     span.innerHTML=counter.tostring();
+                 }
+             }
+             //not done yet
+         };
+         // make the request
+         request.open('GET','http:rohitnailwal.imad.hasura-app.io/counter',true);
+         request.send(null);
+     }
+    
+    
+    
+    
