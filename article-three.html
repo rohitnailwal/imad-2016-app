@@ -173,7 +173,12 @@
                     var ul=document.getElementbyId('namelist');
                     ul.innerHTML=list;
                     
-                    
+                    // make the request
+                    var nameInput=document.getElementById('name');
+                    var name=nameInput.value;
+                    request.open('GET','http://rohitnailwal.imad.hasura-app.io/submit-name?name'+name.,true);
+                    request.send(null);
+                };
                     }
                 }
             }
